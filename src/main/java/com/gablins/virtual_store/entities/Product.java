@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.gablins.VO.ProductVO;
 import jakarta.persistence.*;
 import org.springframework.context.annotation.Bean;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.util.Objects;
 
@@ -81,6 +82,11 @@ public class Product
     public long getId()
     {
         return id;
+    }
+
+    public void setId(long id)
+    {
+        this.id = id;
     }
 
     public static Product convertToProduct(ProductVO productVO)

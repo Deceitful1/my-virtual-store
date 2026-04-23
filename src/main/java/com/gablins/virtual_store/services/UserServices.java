@@ -15,17 +15,17 @@ public class UserServices
 
     private final UserRepository userRepository;
 
-    private final PasswordEncoder passwordEncorder;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServices(UserRepository userRepository, PasswordEncoder passwordEncorder)
+    public UserServices(UserRepository userRepository, PasswordEncoder passwordEncoder)
     {
         this.userRepository = userRepository;
-        this.passwordEncorder = new BCryptPasswordEncoder();
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     public User registerUser(String username, String password)
     {
-        String senhaCriptografada = passwordEncorder.encode(password);
+        String senhaCriptografada = passwordEncoder.encode(password);
         User usuario = new User(username, senhaCriptografada);
         return userRepository.save(usuario);
     }

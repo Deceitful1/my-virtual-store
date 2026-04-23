@@ -1,13 +1,14 @@
 package com.gablins.VO;
 
 import com.gablins.virtual_store.entities.Product;
+import org.springframework.hateoas.RepresentationModel;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ProductVO
+public class ProductVO extends RepresentationModel<ProductVO>
 {
     private long id;
     private String name;
@@ -15,7 +16,7 @@ public class ProductVO
     private double price;
     private int quantity;
 
-    public ProductVO(Long id,String name, String description, double price, int quantity)
+    public ProductVO(Long id, String name, String description, double price, int quantity)
     {
         this.id = id;
         this.name = name;
@@ -23,7 +24,6 @@ public class ProductVO
         this.price = price;
         this.quantity = quantity;
     }
-
 
 
     public String getName()
@@ -71,22 +71,24 @@ public class ProductVO
         return id;
     }
 
+    public void setId(long id)
+    {
+        this.id = id;
+    }
+
     public static ProductVO fromEntity(Product product)
     {
         return new ProductVO(product.getId(), product.getName(), product.getDescription(), product.getPrice(), product.getQuantity());
     }
+
     public static List<ProductVO> fromEntities(List<Product> products)
     {
         List<ProductVO> productVOS = new ArrayList<>();
-        for(Product product : products)
-        {
+        for (Product product : products) {
             productVOS.add(ProductVO.fromEntity(product));
         }
         return productVOS;
     }
-
-
-
 
 
     @Override

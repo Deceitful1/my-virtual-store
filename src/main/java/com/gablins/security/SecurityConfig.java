@@ -16,12 +16,10 @@
     @EnableWebSecurity
     public class SecurityConfig
     {
-        private final UserDetailsService userDetailsService;
         private final SecurityFilter securityFilter;
 
         public SecurityConfig(UserDetailsService userDetailsService, SecurityFilter securityFilter)
         {
-            this.userDetailsService = userDetailsService;
             this.securityFilter = securityFilter;
         }
 
@@ -31,7 +29,7 @@
         {
             http.cors(Customizer.withDefaults()).csrf(csrf -> csrf.disable()).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/auth/**")
-                            .permitAll()
+                            .permitAll().requestMatchers("/admin/**").hasRole("ADMIN")
                             .anyRequest().
                             authenticated()).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
 

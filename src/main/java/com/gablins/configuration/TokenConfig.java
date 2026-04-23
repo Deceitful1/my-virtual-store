@@ -19,17 +19,31 @@ public class TokenConfig
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
 
-        return Jwts.builder().claim("userId", user.getId()).setSubject(user.getUsername())
-                .setExpiration(new Date(System.currentTimeMillis() + 8640000)).setIssuedAt(new Date()).signWith(signatureAlgorithm, secret).compact();
+        return Jwts.builder().
+                claim("userId", user.getId()).
+                setSubject(user.getUsername()).
+                setExpiration(new Date(System.currentTimeMillis() + 8640000)).
+                setIssuedAt(new Date()).
+                signWith(signatureAlgorithm, secret).
+                compact();
     }
 
 
     public Optional<JWTUserData> validateToken(String token)
     {
         try {
-            Claims claims = Jwts.parserBuilder().setSigningKey(secret).build().parseClaimsJws(token).getBody();
+            Claims claims = Jwts.parserBuilder().
+                    setSigningKey(secret).
+                    build().
+                    parseClaimsJws(token).
+                    getBody();
             Long id = claims.get("userId", Long.class);
-            return Optional.of(JWTUserData.builder().userId(id).email(claims.getSubject()).build());
+
+            return Optional.of(JWTUserData.builder().
+                    userId(id).
+                    email(claims.getSubject()).
+                    build());
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

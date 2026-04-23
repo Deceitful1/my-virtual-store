@@ -23,20 +23,18 @@ public class StoreController
     {
         return ResponseEntity.status(200).body(productService.findAll());
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductVO> findById(@PathVariable Long id)
+    {
+        return ResponseEntity.status(200).body(productService.findById(id));
+    }
+
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<ProductVO> addProduct(@RequestBody Product product)
     {
        return ResponseEntity.status(201).body(productService.create(product));
     }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public ResponseEntity<ProductVO> getProduct(@PathVariable Long id)
-    {
-
-        return ResponseEntity.ok(productService.findById(id));
-    }
-
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<ProductVO> updateProduct(@RequestBody Product product)
     {
