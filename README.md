@@ -62,3 +62,43 @@ src/
  │
  └── test/
      └── java/com/gablins/virtual_store/repositories  # Testes
+```
+## ⚙️ Como rodar o projeto
+
+### 📌 Pré-requisitos
+
+Antes de começar, você precisa ter instalado na sua máquina:
+
+- Java 17 ou superior
+- Git
+- Maven (opcional, pois o projeto usa Maven Wrapper)
+
+Abra o CMD e Verifique se está tudo ok:
+
+```bash
+java -version
+git --version
+```
+### 📥 1. Clone o repositório
+```bash
+git clone https://github.com/Deceitful1/my-virtual-store.git
+```
+
+### 📂 2. Acesse a pasta do projeto
+```bash
+cd my-virtual-store
+```
+### ⚙️ 3. Configurações (application.properties)
+
+As configurações da aplicação estão em:
+```bash
+src/main/resources/application.properties
+```
+
+Aqui você pode alterar:
+
+Porta da aplicação
+Configuração do banco de dados
+Credenciais
+Configurações de segurança
+
