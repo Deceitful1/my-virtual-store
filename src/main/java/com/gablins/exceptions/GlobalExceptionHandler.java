@@ -22,6 +22,7 @@ public class GlobalExceptionHandler
         Error error = new Error(LocalDateTime.now(), HttpStatus.BAD_REQUEST, "Bad request");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
+
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<Object> handleProductNotFound(ProductNotFoundException ex)
     {
@@ -67,9 +68,12 @@ public class GlobalExceptionHandler
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
-
-
-
+    @ExceptionHandler(CartItemNotFoundException.class)
+    public ResponseEntity<?> handleCartItemNotFound(Exception ex)
+    {
+        Error error = new Error(LocalDateTime.now(), HttpStatus.NOT_FOUND, ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
 
 
     @ExceptionHandler(BadRequestException.class)

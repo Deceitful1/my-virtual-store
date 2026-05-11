@@ -1,11 +1,13 @@
 package com.gablins.configuration;
 
+import com.gablins.virtual_store.entities.CartItem;
 import com.gablins.virtual_store.entities.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 

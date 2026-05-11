@@ -47,8 +47,8 @@ public class ProductService
 
     public void delete(Long id)
     {
-        Product product = Product.convertToProduct(findById(id));
-        productRepository.delete(product);
+      Product product = productRepository.findById(id).orElseThrow((    ) ->  new ProductNotFoundException("Product with id: " + id +" not found"));
+      productRepository.delete(product);
 
     }
 

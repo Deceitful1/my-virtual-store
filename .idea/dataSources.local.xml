@@ -6,7 +6,7 @@
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
-      <user-name>gabriel</user-name>
+      <user-name>sa</user-name>
       <schema-mapping>
         <introspection-scope>
           <node negative="1">

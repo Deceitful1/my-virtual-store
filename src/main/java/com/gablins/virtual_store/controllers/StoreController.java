@@ -42,7 +42,7 @@ public class StoreController
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable @Value("id") Long id)
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id)
     {
         productService.delete(id);
         return ResponseEntity.noContent().build();

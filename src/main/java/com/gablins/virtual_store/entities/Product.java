@@ -13,7 +13,7 @@ import java.util.Objects;
 @Table(name = "product")
 @Entity
 @JsonPropertyOrder({"id","name","description","price","quantity"})
-public class Product
+public class  Product
 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

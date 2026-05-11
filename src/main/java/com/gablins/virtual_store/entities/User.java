@@ -2,11 +2,13 @@ package com.gablins.virtual_store.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gablins.VO.UserDTO;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -22,16 +24,19 @@ public class User implements UserDetails
     private String username;
     @Column(unique = false, nullable = false)
     private String password;
+    @OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<CartItem> cartItems = new ArrayList<>();
 
 
     public User()
     {
     }
 
-    public User(String username, String password)
+    public User(String username, String password, List<CartItem> cartItems)
     {
         this.username = username;
         this.password = password;
+        this.cartItems = cartItems;
     }
 
     public Long getId()
@@ -72,7 +77,15 @@ public class User implements UserDetails
     {
         this.username = username;
     }
+        public List<CartItem> getCartItems()
+        {
+           return cartItems;
+        }
 
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities()
@@ -90,6 +103,22 @@ public class User implements UserDetails
         this.password = password;
     }
 
+    public void setCartItems(List<CartItem> cartItems)
+    {
+        this.cartItems = cartItems;
+    }
+    public void addToCart(CartItem item)
+    {
+        cartItems.add(item );
+    }
+
+    public User convertToEntity(UserDTO dto)
+    {
+        return new User(dto.getUsername(),dto.getPassword(),dto.getCartItems());
+    }
+
+
+
     @Override
     public boolean equals(Object o)
     {
@@ -103,4 +132,16 @@ public class User implements UserDetails
     {
         return Objects.hashCode(getId());
     }
+
+    @Override
+    public String toString()
+    {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+
 }
