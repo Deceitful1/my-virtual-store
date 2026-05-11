@@ -97,8 +97,8 @@ src/main/resources/application.properties
 
 Aqui você pode alterar:
 
-Porta da aplicação
-Configuração do banco de dados
-Credenciais
-Configurações de segurança
+- Porta da aplicação
+- Configuração do banco de dados
+- Credenciais
+- Configurações de segurança
 
