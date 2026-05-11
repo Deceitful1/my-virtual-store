@@ -35,7 +35,7 @@ O projeto foi desenvolvido com o objetivo de mostrar:
 - 🔐 Spring Security  
 - 🗄️ JPA / Hibernate  
 - 🧪 JUnit (testes)  
-- 🛢️ Banco de dados (H2 / MySQL — ajustar se necessário)  
+- 🛢️ Banco de dados
 - 📦 Maven  
 
 ---
