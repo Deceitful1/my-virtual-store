@@ -17,8 +17,9 @@ https://github.com/Deceitful1/my-virtual-store
 
 O **My Virtual Store** é uma aplicação backend que representa o núcleo de uma loja virtual, utilizando arquitetura em camadas bem definida.
 
-O projeto foi desenvolvido com o objetivo de praticar:
+O projeto foi desenvolvido com o objetivo de mostrar:
 
+- Domínio das tecnologias
 - Estruturação de APIs REST
 - Boas práticas com Spring Boot
 - Separação de responsabilidades (Controller, Service, Repository)
